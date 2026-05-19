@@ -234,11 +234,10 @@ app.post("/order", async(req,res)=>{
 
     const products = req.body.products;
 
-    const order =
-      new Order(req.body);
+    const order = new Order(req.body);
 
     await order.save();
-
+    console.log("ORDER SAVED ✅");
     // 🔥 INGA paste pannu
     for(const item of products){
 
