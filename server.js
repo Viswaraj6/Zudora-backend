@@ -69,7 +69,7 @@ const Product = mongoose.model("Product", {
 
   // 🔥 IMAGE FIX
   images: [String],
-
+ primaryImage: String,
   // 🔥 DETAILS
   brand: String,
   fabric: String,
