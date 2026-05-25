@@ -248,8 +248,8 @@ app.put("/products/:id", checkAdmin, async(req,res)=>{
     }
 
     // 🔥 TOTAL STOCK
-    product.stock =
-      req.body.stock || 0;
+product.stock =
+  req.body.stock ?? product.stock;
 
     await product.save();
 
