@@ -407,7 +407,19 @@ app.get("/video", async (req, res) => {
 });
 app.put("/orders/:id", checkAdmin, async (req, res) => {
   try {
-    await Order.findByIdAndUpdate(req.params.id, { status: req.body.status });
+    const updateData = {
+  status: req.body.status
+};
+
+if(req.body.deliveryDate){
+  updateData.deliveryDate =
+    req.body.deliveryDate;
+}
+
+await Order.findByIdAndUpdate(
+  req.params.id,
+  updateData
+);
 
     res.json({
       success: true,
