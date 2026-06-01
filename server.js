@@ -101,9 +101,20 @@ const OrderSchema = new mongoose.Schema({
   products: Array,
   total: Number,
   paymentId: String,
-  status: { type: String, default: "Pending" }
+
+  paymentStatus: String,
+  paymentMethod: String,
+
+  orderDate: Date,
+  deliveryDate: Date,
+
+  status: {
+    type: String,
+    default: "Pending"
+  }
+
 }, {
-  timestamps: true   // 🔥 IMPORTANT
+  timestamps: true
 });
 
 const Order = mongoose.model("Order", OrderSchema);
