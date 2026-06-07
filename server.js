@@ -333,17 +333,32 @@ app.post("/order", async(req,res)=>{
 
     const products = req.body.products;
 
-  const count = await Order.countDocuments();
+    let counter =
+      await Counter.findOne({ name: "order" });
 
-const orderNumber =
-String(count + 1).padStart(5, "0");
+    if(!counter){
 
-const order = new Order({
-  ...req.body,
-  orderNumber
-});
+      counter = await Counter.create({
+        name: "order",
+        value: 0
+      });
 
-await order.save();
+    }
+
+    counter.value += 1;
+
+    await counter.save();
+
+    const orderNumber =
+      String(counter.value).padStart(5,"0");
+
+    const order = new Order({
+      ...req.body,
+      orderNumber
+    });
+
+    await order.save();
+    
     
     console.log("ORDER SAVED ✅");
     // 🔥 INGA paste pannu
