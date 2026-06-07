@@ -93,6 +93,10 @@ const Product = mongoose.model("Product", {
 const Video = mongoose.model("Video", {
   url: String
 });
+const Counter = mongoose.model("Counter", {
+  name: String,
+  value: Number
+});
 const OrderSchema = new mongoose.Schema({
    orderNumber: String,
   user: String,
