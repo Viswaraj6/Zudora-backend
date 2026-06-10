@@ -128,17 +128,32 @@ app.post(
 "/reactivation-request",
 async(req,res)=>{
 
-  const request =
-  new ReactivationRequest({
-    phone:req.body.phone,
-    reason:req.body.reason
-  });
+const existing =
+await ReactivationRequest.findOne({
+ phone:req.body.phone,
+ status:"Pending"
+});
 
-  await request.save();
+if(existing){
 
-  res.json({
-    success:true
-  });
+ return res.json({
+  success:true,
+  alreadyPending:true
+ });
+
+}
+
+const request =
+new ReactivationRequest({
+ phone:req.body.phone,
+ reason:req.body.reason
+});
+
+await request.save();
+
+res.json({
+ success:true
+});
 
 });
 app.get(
