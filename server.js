@@ -178,6 +178,20 @@ async(req,res)=>{
  });
 
 });
+app.get(
+"/latest-request/:phone",
+async(req,res)=>{
+
+const request =
+await ReactivationRequest
+.findOne({
+ phone:req.params.phone
+})
+.sort({createdAt:-1});
+
+res.json(request);
+
+});
 /* 🎬 GLOBAL VIDEO */
 const Video = mongoose.model("Video", {
   url: String
