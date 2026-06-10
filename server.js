@@ -96,7 +96,14 @@ const User = mongoose.model("User", {
     type: String,
     unique: true
   },
+
+  status:{
+    type:String,
+    default:"Active"
+  },
+
   password: String,
+
   createdAt: {
     type: Date,
     default: Date.now
