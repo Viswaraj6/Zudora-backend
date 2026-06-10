@@ -89,6 +89,19 @@ const Product = mongoose.model("Product", {
 }],
   category: String
 });
+const User = mongoose.model("User", {
+  name: String,
+  email: String,
+  phone: {
+    type: String,
+    unique: true
+  },
+  password: String,
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
+});
 /* 🎬 GLOBAL VIDEO */
 const Video = mongoose.model("Video", {
   url: String
