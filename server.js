@@ -109,6 +109,37 @@ const User = mongoose.model("User", {
     default: Date.now
   }
 });
+const ReactivationRequest = mongoose.model(
+"ReactivationRequest",
+{
+  phone:String,
+  reason:String,
+  status:{
+    type:String,
+    default:"Pending"
+  },
+  createdAt:{
+    type:Date,
+    default:Date.now
+  }
+});
+app.post(
+"/reactivation-request",
+async(req,res)=>{
+
+  const request =
+  new ReactivationRequest({
+    phone:req.body.phone,
+    reason:req.body.reason
+  });
+
+  await request.save();
+
+  res.json({
+    success:true
+  });
+
+});
 /* 🎬 GLOBAL VIDEO */
 const Video = mongoose.model("Video", {
   url: String
