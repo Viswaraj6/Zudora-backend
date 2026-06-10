@@ -329,6 +329,34 @@ app.get("/user/:phone", async (req,res)=>{
  res.json(user);
 
 });
+app.put("/user/:phone", async(req,res)=>{
+
+try{
+
+await User.updateOne(
+{
+ phone:req.params.phone
+},
+{
+ name:req.body.name,
+ email:req.body.email,
+ gender:req.body.gender
+}
+);
+
+res.json({
+ success:true
+});
+
+}catch(err){
+
+res.status(500).json({
+ success:false
+});
+
+}
+
+});
 app.get("/products", async (req, res) => {
   try {
 
