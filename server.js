@@ -768,7 +768,3 @@ app.delete("/orders/:id", checkAdmin, async (req, res) => {
   }
 });
 /* ================= START ================= */
-
-app.listen(process.env.PORT || 5000, () => {
-  console.log("Server running 🚀");
-});
