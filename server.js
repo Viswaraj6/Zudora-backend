@@ -5,7 +5,21 @@ const Razorpay = require("razorpay");
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 const axios = require("axios");
+
+const http = require("http");
+const { Server } = require("socket.io");
+
 const app = express();
+
+const server = http.createServer(app);
+
+const io = new Server(server,{
+  cors:{
+    origin:"*"
+  }
+});
+
+app.set("io", io);
 
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
