@@ -21,14 +21,18 @@ async function syncItems() {
     const Product = global.Product;
 
     for (const item of res.data.items) {
-        console.log({
+       console.log({
     item: item.item_name,
     size: item.cf_size,
-    saleQty: item.quantity_available_for_sale,
-    stock: item.stock_on_hand
+    available_stock: item.available_stock,
+    actual_available_stock: item.actual_available_stock,
+    available_for_sale_stock: item.available_for_sale_stock,
+    initial_stock: item.initial_stock,
+    quantity_in_hand: item.quantity_in_hand,
+    available: item.available
 });
 
-break;  
+break;
         const sku = item.sku;
 
         // Last digit = Size
