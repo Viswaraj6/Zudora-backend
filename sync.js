@@ -61,22 +61,27 @@ if (
 
         if (!product) {
 
-            product = new Product({
+           product = new Product({
 
-                name: styleNo,
+    name: styleNo,
 
-                styleNo,
+    styleNo,
 
-                price: Number(item.rate || 0),
+    price: Number(item.rate || 0),
 
-                stock: 0,
+    stock: 0,
 
-                sizes: ["S","M","L","XL","XXL"],
+    category: item.category_name,
 
-                sizeStock: []
+    sizes:
+        category.includes("PANT") ||
+        category.includes("JEANS")
+        ? ["30","32","34","36","38"]
+        : ["S","M","L","XL","XXL"],
 
-            });
+    sizeStock: []
 
+});
         }
 
         const index = product.sizeStock.findIndex(
