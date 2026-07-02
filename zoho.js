@@ -14,9 +14,10 @@ async function getAccessToken() {
         }
     );
 
+    console.log(res.data);
+
     return res.data.access_token;
 }
-
 module.exports = {
     getAccessToken
 };
