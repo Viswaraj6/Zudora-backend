@@ -97,7 +97,7 @@ if (
 
            product.sizeStock.push({
     size,
-    stock: Number(item.stock_on_hand || 0),
+    stock: Number(item.quantity_available_for_sale || 0),
     sku: item.sku
 });
             
