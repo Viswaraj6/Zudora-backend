@@ -29,26 +29,34 @@ async function syncItems() {
         // First 4 digit = Style
         const styleNo = sku.slice(0, -1);
 
-        let size = "";
+       const category = (item.category_name || "").toUpperCase();
 
-        switch (sizeDigit) {
-            case "1":
-                size = "S";
-                break;
-            case "2":
-                size = "M";
-                break;
-            case "3":
-                size = "L";
-                break;
-            case "4":
-                size = "XL";
-                break;
-            case "5":
-                size = "XXL";
-                break;
-        }
+let size = "";
 
+if (
+    category.includes("PANT") ||
+    category.includes("JEANS")
+) {
+
+    switch (sizeDigit) {
+        case "1": size = "30"; break;
+        case "2": size = "32"; break;
+        case "3": size = "34"; break;
+        case "4": size = "36"; break;
+        case "5": size = "38"; break;
+    }
+
+} else {
+
+    switch (sizeDigit) {
+        case "1": size = "S"; break;
+        case "2": size = "M"; break;
+        case "3": size = "L"; break;
+        case "4": size = "XL"; break;
+        case "5": size = "XXL"; break;
+    }
+
+}
         let product = await Product.findOne({ styleNo });
 
         if (!product) {
