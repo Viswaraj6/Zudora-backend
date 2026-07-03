@@ -9,6 +9,8 @@ console.log("========== NEW SYNC.JS ==========");
 console.log("TOKEN:", token);
 console.log("ORG:", process.env.ZOHO_ORGANIZATION_ID);
     
+   console.log("Calling Inventory API..."); 
+
     const res = await axios.get(
         "https://www.zohoapis.in/inventory/v1/items",
         {
@@ -20,7 +22,9 @@ console.log("ORG:", process.env.ZOHO_ORGANIZATION_ID);
             }
         }
     );
-
+console.log("Inventory API SUCCESS");
+console.log("TOTAL ITEMS:", res.data.items.length);
+    
     const Product = global.Product;
 console.log("TOTAL ITEMS:", res.data.items.length);
 console.log("Starting Loop...");
