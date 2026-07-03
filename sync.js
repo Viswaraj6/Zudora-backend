@@ -3,7 +3,7 @@ const axios = require("axios");
 const { getAccessToken } = require("./zoho");
 
 async function syncItems() {
-
+console.log("========== NEW SYNC.JS ==========");
     const token = await getAccessToken();
 
     const res = await axios.get(
