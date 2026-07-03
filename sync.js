@@ -98,6 +98,10 @@ if (
 
 });
         }
+        product.locationStock = locations.map(loc => ({
+    location: loc.location_name,
+    stock: Number(loc.location_available_for_sale_stock)
+}));
 
         const index = product.sizeStock.findIndex(
             s => s.size === size
