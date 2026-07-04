@@ -167,11 +167,6 @@ if (
 
         if (index >= 0) {
 
-    console.log(
-        "AVAILABLE STOCK:",
-        item.quantity_available_for_sale
-    );
-
    const availableStock = locations.reduce(
     (total, loc) =>
         total + Number(loc.location_available_for_sale_stock || 0),
@@ -181,11 +176,6 @@ if (
 product.sizeStock[index].stock = availableStock;
 
 } else {
-
-    console.log(
-        "AVAILABLE STOCK:",
-        item.quantity_available_for_sale
-    );
 
   const availableStock = locations.reduce(
     (total, loc) =>
