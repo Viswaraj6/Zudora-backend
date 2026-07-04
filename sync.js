@@ -50,7 +50,8 @@ console.log("ITEM:", item.item_id, item.sku);
                 }
             }
         );
-
+console.log("LOCATION RESPONSE:");
+console.log(JSON.stringify(locationRes.data, null, 2));
         locations = locationRes.data.item_location_details.locations;
 
       console.log("SUCCESS:", item.item_id, item.sku);
