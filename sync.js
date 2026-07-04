@@ -82,22 +82,25 @@ if (item.sku === "SS-LPUR-S(25001)") {
     console.log(JSON.stringify(item, null, 2));
     console.log("ITEM DATA END");
 }
-   const sku = (item.sku || "").trim();
+  const itemCode = (item.name || "").trim();
 
-    // 👇 இதற்கு கீழே உன் பழைய code அதே மாதிரி இருக்கட்டும்
-        // Last digit = Size
-        const sizeDigit = sku.slice(-1);
+// Last digit = Size
+const sizeDigit = itemCode.slice(-1);
 
-        // First 4 digit = Style
-        const styleNo = sku.slice(0, -1);
+// First 4 digits = Style Number
+const styleNo = itemCode.slice(0, 4);
+
 console.log(
-    "SKU:",
-    sku,
+    "ITEM NAME:",
+    itemCode,
+    "STYLE:",
+    styleNo,
     "SIZE DIGIT:",
     sizeDigit,
     "CATEGORY:",
     item.category_name
 );
+       
        const category = (item.category_name || "").toUpperCase();
 
 let size = "";
