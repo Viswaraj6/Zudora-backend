@@ -149,7 +149,7 @@ if (
     sizes:
         category.includes("PANT") ||
         category.includes("JEANS")
-        ? ["30","32","34","36","38"]
+       ? ["30","32","34","36","38","40"]
         : ["S","M","L","XL","XXL"],
 
     sizeStock: []
