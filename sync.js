@@ -200,7 +200,14 @@ product.sizeStock.push({
         await product.save();
 
     }
-
+console.log("================================");
+console.log("SAVED PRODUCT");
+console.log("STYLE :", product.styleNo);
+console.log("NAME  :", product.name);
+console.log("STOCK :", product.stock);
+console.log("SIZE STOCK :", JSON.stringify(product.sizeStock, null, 2));
+console.log("LOCATION :", JSON.stringify(product.locationStock, null, 2));
+console.log("================================");
     console.log("Sync Completed");
 
 }
