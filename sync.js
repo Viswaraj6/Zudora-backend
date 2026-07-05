@@ -2,6 +2,7 @@
 const axios = require("axios");
 const fs = require("fs");
 const { getAccessToken } = require("./zoho");
+const { v2: cloudinary } = require("cloudinary");
 
 async function syncItems() {
 console.log("========== NEW SYNC.JS ==========");
