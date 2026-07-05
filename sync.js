@@ -36,9 +36,10 @@ while (hasMore) {
     hasMore = res.data.page_context.has_more_page;
 
     page++;
+    console.log(JSON.stringify(res.data.page_context, null, 2));
 }
 console.log("Inventory API SUCCESS");
-    console.log(JSON.stringify(res.data.page_context, null, 2));
+    
 console.log("TOTAL ITEMS:", allItems.length);
     
     const Product = global.Product;
