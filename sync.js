@@ -31,7 +31,9 @@ console.log("TOTAL ITEMS:", res.data.items.length);
 
 console.log("Starting Loop...");
    for (const item of res.data.items) {
-
+       
+await new Promise(resolve => setTimeout(resolve, 500));
+       
     console.log("Checking Item:", item.item_id, item.sku);
 
     let locations = [];
