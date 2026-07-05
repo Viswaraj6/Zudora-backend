@@ -14,9 +14,10 @@ console.log("Access Token:", token);
     const res = await axios.get(
         "https://www.zohoapis.in/inventory/v1/items",
         {
-            params: {
-                organization_id: process.env.ZOHO_ORGANIZATION_ID
-            },
+           params: {
+    organization_id: process.env.ZOHO_ORGANIZATION_ID,
+    per_page: 200
+},
             headers: {
                 Authorization: `Zoho-oauthtoken ${token}`
             }
