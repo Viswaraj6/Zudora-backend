@@ -53,9 +53,14 @@ try {
 
     locations = locationRes.data.item_location_details.locations;
 
-} catch (err) {
+} 
+catch (err) {
 
-    console.log("Failed:", item.sku);
+    console.log("============== ERROR ==============");
+    console.log("SKU :", item.sku);
+    console.log("STATUS :", err.response?.status);
+    console.log("DATA :", err.response?.data);
+    console.log("===================================");
 
     continue;
 }
