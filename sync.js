@@ -156,16 +156,13 @@ if (
     product.sizeStock[index].stock = availableStock;
 
 }
-      else {
+    else {
 
-const availableStock =
-    Number(item.available_for_sale_stock || 0);
-
-product.sizeStock.push({
-    size,
-    stock: availableStock,
-    sku: item.sku
-});
+    product.sizeStock.push({
+        size,
+        stock: availableStock,
+        sku: item.sku
+    });
 
 }
 
