@@ -78,7 +78,14 @@ console.log("ITEM:", item.item_id, item.sku);
     );
 
     console.log("==========================");
+if (err.response?.status === 429) {
 
+    console.log("Rate limit reached. Waiting 5 seconds...");
+
+    await new Promise(resolve => setTimeout(resolve, 5000));
+
+    continue;
+}
     continue;
 }
 if (item.sku === "SS-LPUR-S(25001)") {
