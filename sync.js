@@ -256,9 +256,11 @@ if (
             s => s.size === size
         );
 
-      if (index >= 0) {
+     if (index >= 0) {
 
     product.sizeStock[index].stock = availableStock;
+    product.sizeStock[index].sku = item.sku;
+    product.sizeStock[index].image = uploadResult.secure_url;
 
 }
     else {
