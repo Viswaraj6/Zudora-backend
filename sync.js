@@ -141,6 +141,7 @@ if (
     }
 
 }
+      const products = {};
         let product = await Product.findOne({ styleNo });
 
         if (!product) {
