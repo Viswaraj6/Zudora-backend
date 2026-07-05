@@ -113,7 +113,7 @@ console.log("ATTACHMENTS:", JSON.stringify(detailRes.data.item.attachments, null
 
     console.log("========== ITEM DETAILS ==========");
 
-    console.log(JSON.stringify(detailRes.data, null, 2));
+     //console.log(JSON.stringify(detailRes.data, null, 2));
 
     console.log("==================================");
 
