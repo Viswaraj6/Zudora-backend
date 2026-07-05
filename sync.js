@@ -79,6 +79,16 @@ const detailRes = await axios.get(
         }
     }
 );
+    if (item.name === "02261") {
+
+    console.log("========== ITEM DETAILS ==========");
+
+    console.log(JSON.stringify(detailRes.data, null, 2));
+
+    console.log("==================================");
+
+    process.exit();
+}
 } 
 catch(err){
 
