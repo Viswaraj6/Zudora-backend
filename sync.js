@@ -90,7 +90,7 @@ console.log(Object.keys(detailRes.data.item));
 
     console.log("==================================");
 
-    process.exit();
+    //process.exit();
 }
 } 
 catch(err){
