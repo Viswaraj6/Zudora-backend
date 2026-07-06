@@ -77,59 +77,6 @@ try {
     );
 
     locations = locationRes.data.item_location_details.locations;
-const detailRes = await axios.get(
-    `https://www.zohoapis.in/inventory/v1/items/${item.item_id}`,
-    {
-        params: {
-            organization_id: process.env.ZOHO_ORGANIZATION_ID
-        },
-        headers: {
-            Authorization: `Zoho-oauthtoken ${token}`
-        }
-    }
-);
-    const docId = detailRes.data.item.documents[0]?.document_id;
-   
-   if (!docId) {
-    console.log("No image found for", item.sku);
-    continue;
-}
-
-console.log("DOC ID:", docId);
-   
- 
-
-const imagePath = path.join(__dirname, `${item.item_id}.png`);
-
-const imageDownload = await axios.get(
-    `https://www.zohoapis.in/inventory/v1/documents/${docId}`,
-    {
-        params: {
-            organization_id: process.env.ZOHO_ORGANIZATION_ID
-        },
-        headers: {
-            Authorization: `Zoho-oauthtoken ${token}`
-        },
-        responseType: "stream"
-    }
-);
-
-const writer = fs.createWriteStream(imagePath);
-
-imageDownload.data.pipe(writer);
-
-await new Promise((resolve, reject) => {
-    writer.on("finish", resolve);
-    writer.on("error", reject);
-});
-
-console.log("Downloaded:", imagePath);
-
-const uploadResult = await cloudinary.uploader.upload(imagePath, {
-    folder: "products"
-});
-
-console.log("Cloudinary URL:", uploadResult.secure_url);    
 
 
 
@@ -224,6 +171,61 @@ if (
      let uploadResult = null;
 
 if (!product || !product.primaryImage) {
+   
+   const detailRes = await axios.get(
+    `https://www.zohoapis.in/inventory/v1/items/${item.item_id}`,
+    {
+        params: {
+            organization_id: process.env.ZOHO_ORGANIZATION_ID
+        },
+        headers: {
+            Authorization: `Zoho-oauthtoken ${token}`
+        }
+    }
+);
+    const docId = detailRes.data.item.documents[0]?.document_id;
+   
+   if (!docId) {
+    console.log("No image found for", item.sku);
+    continue;
+}
+
+console.log("DOC ID:", docId);
+   
+ 
+
+const imagePath = path.join(__dirname, `${item.item_id}.png`);
+
+const imageDownload = await axios.get(
+    `https://www.zohoapis.in/inventory/v1/documents/${docId}`,
+    {
+        params: {
+            organization_id: process.env.ZOHO_ORGANIZATION_ID
+        },
+        headers: {
+            Authorization: `Zoho-oauthtoken ${token}`
+        },
+        responseType: "stream"
+    }
+);
+
+const writer = fs.createWriteStream(imagePath);
+
+imageDownload.data.pipe(writer);
+
+await new Promise((resolve, reject) => {
+    writer.on("finish", resolve);
+    writer.on("error", reject);
+});
+
+console.log("Downloaded:", imagePath);
+
+const uploadResult = await cloudinary.uploader.upload(imagePath, {
+    folder: "products"
+});
+
+console.log("Cloudinary URL:", uploadResult.secure_url);    
+}
 
         if (!product) {
 
