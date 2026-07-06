@@ -267,7 +267,7 @@ console.log("Cloudinary URL:", uploadResult.secure_url);
     product.sizeStock[index].stock = availableStock;
     product.sizeStock[index].sku = item.sku;
    product.sizeStock[index].image =
-product.primaryImage;
+uploadResult?.secure_url || product.primaryImage
 
 }
     else {
@@ -276,7 +276,7 @@ product.primaryImage;
         size,
         stock: availableStock,
         sku: item.sku,
-        image: product.primaryImage
+        image:uploadResult?.secure_url || product.primaryImage
     });
 
 }
