@@ -221,7 +221,7 @@ await new Promise((resolve, reject) => {
 
 console.log("Downloaded:", imagePath);
 
-const uploadResult = await cloudinary.uploader.upload(imagePath, {
+ uploadResult = await cloudinary.uploader.upload(imagePath, {
     folder: "products"
 });
 
