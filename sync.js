@@ -301,8 +301,9 @@ console.log(product.images);
      
      console.log("After Save");
      
-      fs.unlinkSync(imagePath);
-
+     if (uploadResult) {
+    fs.unlinkSync(imagePath);
+}
 console.log(
     "Saved:",
     product.styleNo,
