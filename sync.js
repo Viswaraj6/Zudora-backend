@@ -221,6 +221,9 @@ if (
 }
      
         let product = await Product.findOne({ styleNo });
+     let uploadResult = null;
+
+if (!product || !product.primaryImage) {
 
         if (!product) {
 
