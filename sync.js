@@ -290,7 +290,7 @@ product.lastSync = syncStartedAt;
     product.primaryImage = uploadResult.secure_url;
     product.images = [uploadResult.secure_url];
 }
-product.images = [uploadResult.secure_url];
+
 
 console.log("Before Save");
 console.log(product.primaryImage);
