@@ -6,6 +6,7 @@ async function syncSales() {
     try {
 
         const token = await getAccessToken();
+        const Product = global.Product;
 
         // 1. Get latest invoices
         const res = await axios.get(
@@ -40,11 +41,14 @@ async function syncSales() {
         );
 
      const lineItems = detail.data.invoice.line_items;
-      for (const item of lineItems) {
+        
+     for (const item of detail.data.invoice.line_items) {
 
     const styleNo = item.name.slice(0, 4);
 
-    console.log("Style:", styleNo);
+    let product = await Product.findOne({ styleNo });
+
+    console.log(product);
 
 }
 
