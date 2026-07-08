@@ -7,7 +7,17 @@ async function syncSales() {
 
         const token = await getAccessToken();
         const Product = global.Product;
+        let status = await SyncStatus.findOne({
+    type: "sales"
+});
 
+if (!status) {
+
+    status = new SyncStatus({
+        type: "sales"
+    });
+
+}
         // 1. Get latest invoices
         const res = await axios.get(
             "https://www.zohoapis.in/inventory/v1/invoices",
