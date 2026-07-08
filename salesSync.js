@@ -7,7 +7,7 @@ async function syncSales() {
         const token = await getAccessToken();
 
         const res = await axios.get(
-            "https://pos.zoho.in/posapi/api/v1/sales",
+             "https://www.zohoapis.in/inventory/v1/invoices",
             {
                 params: {
                     organization_id: process.env.ZOHO_ORGANIZATION_ID,
