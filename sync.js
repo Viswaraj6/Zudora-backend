@@ -55,12 +55,30 @@ console.log("TOTAL ITEMS:", allItems.length);
    const syncStartedAt = new Date();
 
 console.log("Starting Loop...");
-  for (const item of allItems) {
-       
+
+let count = 0;
+
+for (const item of allItems) {
+
+    count++;
+
+    if (count % 20 === 0) {
+
+        console.log("Cooling 20 seconds...");
+
+        await new Promise(resolve =>
+            setTimeout(resolve, 20000)
+        );
+
+    }
 
     console.log("Checking Item:", item.item_id, item.sku);
-      await new Promise(resolve => setTimeout(resolve, 1500));
-let locations = [];
+
+    await new Promise(resolve =>
+        setTimeout(resolve, 1500)
+    );
+
+    let locations = [];
 
 try {
 
