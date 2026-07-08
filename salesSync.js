@@ -35,14 +35,17 @@ if (!status) {
         // 2. First invoice
        const invoices = res.data.invoices;
         
-        if (status.lastInvoiceId === invoice.invoice_id) {
+      for (const invoice of invoices) {
 
-    console.log("Already Synced");
+    if (status.lastInvoiceId === invoice.invoice_id) {
 
-    return;
+        console.log("Reached Last Synced Invoice");
 
-     }
-        console.log("Invoice ID:", invoice.invoice_id);
+        break;
+
+    }
+
+    console.log("Invoice ID:", invoice.invoice_id);
 
         // 3. Get invoice details
         const detail = await axios.get(
