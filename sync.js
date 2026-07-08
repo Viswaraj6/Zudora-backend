@@ -317,6 +317,25 @@ console.log(
 //});
 
 //console.log("Old Products Removed");
+   const SyncStatus = require("./models/SyncStatus");
+
+let status = await SyncStatus.findOne({
+    type: "full"
+});
+
+if (!status) {
+
+    status = new SyncStatus({
+        type: "full"
+    });
+
+}
+
+status.lastSyncTime = new Date();
+
+await status.save();
+
+console.log("Full Sync Status Saved");
     
 console.log("================================");
 console.log("Sync Completed");
