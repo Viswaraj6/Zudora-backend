@@ -57,6 +57,30 @@ async function syncSales() {
 const soldSize = sizeField?.value;
 
 console.log("Sold Size:", soldSize);
+         const index = product.sizeStock.findIndex(
+    s => s.size === soldSize
+);
+
+console.log("Index:", index);
+
+if (index >= 0) {
+
+    product.sizeStock[index].stock--;
+
+    product.stock = product.sizeStock.reduce(
+        (a, b) => a + b.stock,
+        0
+    );
+
+    await product.save();
+
+    console.log(
+        "Updated:",
+        product.styleNo,
+        soldSize,
+        product.stock
+    );
+}
 
 }
 
