@@ -110,6 +110,7 @@ status.lastSyncTime = new Date();
 await status.save();
 
 console.log("Sync Status Saved");
+          } 
     } catch (err) {
 
         console.log(err.response?.status);
