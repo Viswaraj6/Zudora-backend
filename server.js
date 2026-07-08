@@ -794,6 +794,24 @@ app.post("/sync-items", checkAdmin, async (req, res) => {
 
 });
 
+app.get("/sync-status", async (req, res) => {
+
+    const SyncStatus = require("./models/SyncStatus");
+
+    const sales = await SyncStatus.findOne({
+        type: "sales"
+    });
+
+    const full = await SyncStatus.findOne({
+        type: "full"
+    });
+
+    res.json({
+        sales,
+        full
+    });
+
+});
 /* ================= START ================= */
 server.listen(process.env.PORT || 5000, () => {
   console.log("Server running 🚀");
