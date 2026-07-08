@@ -745,6 +745,31 @@ app.delete("/orders/:id", checkAdmin, async (req, res) => {
     });
   }
 });
+
+app.post("/sync-sales", checkAdmin, async (req, res) => {
+
+    try {
+
+        await syncSales();
+
+        res.json({
+            success: true,
+            message: "Sales Sync Completed ✅"
+        });
+
+    } catch (err) {
+
+        console.log(err);
+
+        res.status(500).json({
+            success: false,
+            message: "Sales Sync Failed ❌"
+        });
+
+    }
+
+});
+
 app.get("/sync-zakya", async(req,res)=>{
 
     try{
