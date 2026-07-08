@@ -103,14 +103,16 @@ if (index >= 0) {
 }
 
 }
-status.lastInvoiceId = invoices[0].invoice_id;
+  } 
+        
+  status.lastInvoiceId = invoices[0].invoice_id;
 
 status.lastSyncTime = new Date();
 
 await status.save();
 
 console.log("Sync Status Saved");
-          } 
+        
     } catch (err) {
 
         console.log(err.response?.status);
