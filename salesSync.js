@@ -39,7 +39,13 @@ async function syncSales() {
             }
         );
 
-        console.log(JSON.stringify(detail.data, null, 2));
+      console.log(
+    JSON.stringify(
+        detail.data.invoice.line_items,
+        null,
+        2
+    )
+);
 
     } catch (err) {
 
