@@ -87,7 +87,23 @@ console.log("TOTAL ITEMS:", allItems.length);
     
     const Product = global.Product;
    const syncStartedAt = new Date();
+   
+let status = await SyncStatus.findOne({
+    type: "full"
+});
 
+if (!status) {
+
+    status = new SyncStatus({
+        type: "full"
+    });
+
+}
+
+let startIndex = status.lastItemIndex || 0;
+
+console.log("Resume From:", startIndex);
+   
 console.log("Starting Loop...");
 
 let count = 0;
