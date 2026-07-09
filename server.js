@@ -822,6 +822,14 @@ server.listen(process.env.PORT || 5000, () => {
 // Sales Sync - Every 30 Minutes
 cron.schedule("*/30 * * * *", async () => {
 
+    if (global.isFullSyncRunning) {
+
+        console.log("Full Sync Running...Sales Sync Skipped");
+
+        return;
+
+    }
+
     console.log("Auto Sales Sync...");
 
     await syncSales();
