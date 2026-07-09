@@ -109,8 +109,8 @@ for (const item of allItems) {
     console.log("Checking Item:", item.item_id, item.sku);
 
     await new Promise(resolve =>
-        setTimeout(resolve, 3000)
-    );
+    setTimeout(resolve,1000)
+);
 
     let locations = [];
 
