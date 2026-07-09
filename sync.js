@@ -265,11 +265,6 @@ uploadResult?.secure_url || product.primaryImage
             );
 product.lastSync = syncStartedAt;
 
-   if (uploadResult) {
-    product.primaryImage = uploadResult.secure_url;
-    product.images = [uploadResult.secure_url];
-}
-
 
 console.log("Before Save");
 console.log(product.primaryImage);
