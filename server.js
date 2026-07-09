@@ -815,8 +815,7 @@ app.get("/sync-status", async (req, res) => {
 /* ================= START ================= */
 server.listen(process.env.PORT || 5000, () => {
   console.log("Server running 🚀");
-    syncItems();
-   syncSales();
+   
 });
 
 // Sales Sync - Every 30 Minutes
