@@ -1,6 +1,7 @@
 const cron = require("node-cron");
 const { syncItems } = require("./sync");
 const { syncSales } = require("./salesSync");
+const { imageSync } = require("./imageSync");
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
