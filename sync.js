@@ -147,27 +147,6 @@ try {
     //process.exit();
 }
 } 
-catch (err) {
-
-    if (err.response?.status === 429) {
-
-        console.log("429 Waiting 60 seconds...Retrying");
-
-        await new Promise(resolve =>
-            setTimeout(resolve, 60000)
-        );
-
-        count--;
-
-        continue;
-
-    }
-
-    console.log(err.response?.data || err.message);
-
-    continue;
-
-}
    
 if (item.sku === "SS-LPUR-S(25001)") {
     console.log("ITEM DATA START");
