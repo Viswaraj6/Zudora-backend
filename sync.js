@@ -11,6 +11,39 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
+async function callWithRetry(apiCall, retries = 5) {
+
+    for (let attempt = 1; attempt <= retries; attempt++) {
+
+        try {
+            return await apiCall();
+        } catch (err) {
+
+            if (err.response?.status === 429) {
+
+                const wait =
+                    Math.min(30000 * attempt, 120000);
+
+                console.log(
+                    `429 Rate Limit. Retry ${attempt}/${retries} after ${wait / 1000}s`
+                );
+
+                await new Promise(r =>
+                    setTimeout(r, wait)
+                );
+
+                continue;
+            }
+
+            throw err;
+        }
+
+    }
+
+    throw new Error("Max retry exceeded");
+
+}
+
 async function syncItems() {
 console.log("========== NEW SYNC.JS ==========");
     const token = await getAccessToken();
