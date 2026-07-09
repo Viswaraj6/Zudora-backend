@@ -125,7 +125,7 @@ for (let i = startIndex; i < allItems.length; i++) {
 );
 
     let locations = [];
-/*
+
 const locationRes = await callWithRetry(() =>
     axios.get(
         `https://pos.zoho.in/posapi/api/v1/items/${item.item_id}/locationdetails`,
@@ -139,9 +139,10 @@ const locationRes = await callWithRetry(() =>
         }
     )
 );
-*/
-//locations = locationRes.data.item_location_details.locations;
-locations = [];
+
+locations = locationRes.data.item_location_details.locations;
+  
+
 if (item.name === "02261") {
     console.log("========== ITEM DETAILS ==========");
     console.log("==================================");
