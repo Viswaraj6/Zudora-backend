@@ -243,8 +243,8 @@ const availableStock = 0;
 
     product.sizeStock[index].stock = availableStock;
     product.sizeStock[index].sku = item.sku;
-   product.sizeStock[index].image =
-uploadResult?.secure_url || product.primaryImage
+  product.sizeStock[index].image =
+product.primaryImage;
 
 }
     else {
