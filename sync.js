@@ -62,7 +62,7 @@ for (const item of allItems) {
 
     count++;
 
-    if (count % 20 === 0) {
+    if(count % 10 === 0)
 
         console.log("Cooling 20 seconds...");
 
