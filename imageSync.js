@@ -73,6 +73,15 @@ console.log("Resume From:", startIndex);
 
         const product = await Product.findOne({ styleNo });
 
+       if (
+    product &&
+    product.primaryImage &&
+    product.primaryImage !== ""
+) {
+    console.log(styleNo, "Already Synced");
+    continue;
+}
+
         if (!product) {
             console.log("Product Not Found:", styleNo);
             continue;
