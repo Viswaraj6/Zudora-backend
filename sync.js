@@ -357,19 +357,7 @@ console.log(
 //});
 
 //console.log("Old Products Removed");
-   const SyncStatus = require("./models/SyncStatus");
-
-let status = await SyncStatus.findOne({
-    type: "full"
-});
-
-if (!status) {
-
-    status = new SyncStatus({
-        type: "full"
-    });
-
-}
+ 
    
 status.lastItemIndex = 0;
 
