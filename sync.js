@@ -96,16 +96,15 @@ for (const item of allItems) {
 
     count++;
 
-    if (count % 10 === 0) {
+ if(count%50===0){
 
-        console.log("Cooling 30 seconds...");
+    console.log("Cooling 30 sec");
 
-        await new Promise(resolve =>
-            setTimeout(resolve, 30000)
-        );
+    await new Promise(r =>
+        setTimeout(r,30000)
+    );
 
-    }
-
+}
     console.log("Checking Item:", item.item_id, item.sku);
 
     await new Promise(resolve =>
