@@ -296,11 +296,8 @@ await status.save();
      console.log("After Save");
      
     
-console.log(
-    "Saved:",
-    product.styleNo,
-    size,
-    product.stock
+log(
+`Saved : ${product.styleNo} | Size : ${size} | Stock : ${product.stock}`
 );
        } 
   // await Product.deleteMany({
