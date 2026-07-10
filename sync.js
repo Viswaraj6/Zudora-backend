@@ -106,7 +106,7 @@ if (!status) {
 
 let startIndex = status.lastItemIndex || 0;
 
-console.log("Resume From:", startIndex);
+log(`Resume From : ${startIndex}`);
    
 console.log("Starting Loop...");
 
