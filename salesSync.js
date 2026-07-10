@@ -1,6 +1,35 @@
 const axios = require("axios");
 const { getAccessToken } = require("./zoho");
 const SyncStatus = require("./models/SyncStatus");
+
+async function callWithRetry(apiCall, retries = 5) {
+
+    for (let attempt = 1; attempt <= retries; attempt++) {
+
+        try {
+            return await apiCall();
+        } catch (err) {
+
+            if (err.response?.status === 429) {
+
+                const wait = Math.min(30000 * attempt, 120000);
+
+                console.log(`429 Rate Limit. Retry ${attempt}`);
+
+                await new Promise(r => setTimeout(r, wait));
+
+                continue;
+            }
+
+            throw err;
+        }
+
+    }
+
+    throw new Error("Max retry exceeded");
+
+}
+
 async function syncSales() {
 
     try {
