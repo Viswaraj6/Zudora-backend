@@ -105,7 +105,10 @@ console.log("Index:", index);
 
 if (index >= 0) {
 
-    product.sizeStock[index].stock--;
+    // Negative stock avoid
+    if (product.sizeStock[index].stock > 0) {
+        product.sizeStock[index].stock--;
+    }
 
     product.stock = product.sizeStock.reduce(
         (a, b) => a + b.stock,
@@ -120,8 +123,16 @@ if (index >= 0) {
         soldSize,
         product.stock
     );
-}
 
+} else {
+
+    console.log(
+        "Size Not Found:",
+        styleNo,
+        soldSize
+    );
+
+}
 }
           status.lastInvoiceId = invoice.invoice_id;
 
