@@ -127,8 +127,7 @@ for (let i = startIndex; i < allItems.length; i++) {
     );
 
 }
-    console.log("Checking Item:", item.item_id, item.sku);
-
+  log(`Checking : ${item.item_id} | ${item.sku}`);
     await new Promise(resolve =>
     setTimeout(resolve,1000)
 );
