@@ -170,13 +170,10 @@ if (index >= 0) {
 
     await product.save();
 
-    console.log(
-        "Updated:",
-        product.styleNo,
-        soldSize,
-        product.stock
-    );
-
+    log(
+`Updated : ${product.styleNo} | ${soldSize} | Stock : ${product.stock}`
+);
+    
 } else {
 
     console.log(
