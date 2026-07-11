@@ -2,6 +2,16 @@ const axios = require("axios");
 const { getAccessToken } = require("./zoho");
 const SyncStatus = require("./models/SyncStatus");
 
+function log(msg){
+
+    console.log(msg);
+
+    if(global.io){
+        global.io.emit("sync-log", msg);
+    }
+
+}
+
 async function callWithRetry(apiCall, retries = 5) {
 
     for (let attempt = 1; attempt <= retries; attempt++) {
