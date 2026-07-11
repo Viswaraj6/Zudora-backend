@@ -85,7 +85,22 @@ while (hasMore && !stopSync) {
     hasMore = res.data.page_context.has_more_page;
 
     page++;
+console.log(
+    "Saved ID :",
+    status.lastInvoiceId
+);
 
+    
+console.log(
+    "Current ID :",
+    invoice.invoice_id
+);
+
+console.log(
+    "Current No :",
+    invoice.invoice_number
+);
+    
     for (const invoice of invoices) {
         
    if (status.lastInvoiceId === invoice.invoice_id) {
