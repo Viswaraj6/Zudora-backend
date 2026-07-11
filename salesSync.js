@@ -190,11 +190,10 @@ status.lastSyncTime = new Date();
 
 await status.save();
 
-console.log(
-    "Invoice Synced:",
-    invoice.invoice_number
+log(
+`Invoice Synced : ${invoice.invoice_number}`
 );
-  } 
+    } 
      }   
     } catch (err) {
 
