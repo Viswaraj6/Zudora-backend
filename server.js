@@ -527,6 +527,19 @@ app.get("/products", async (req, res) => {
     });
   }
 });
+
+app.get("/download-sample-excel", (req, res) => {
+
+    const filePath = path.join(
+        __dirname,
+        "sample",
+        "Product_Update_Template.xlsx"
+    );
+
+    res.download(filePath);
+
+});
+
 /* DELETE PRODUCT (FIXED) */
 app.delete("/products/:id", checkAdmin, async (req, res) => {
   try {
