@@ -381,6 +381,13 @@ for (const size of allSizes) {
     }
 
 }
+product.stock = product.sizeStock.reduce(
+    (total, item) => total + Number(item.stock || 0),
+    0
+);
+
+product.markModified("sizeStock");
+  
 await product.save();
   
     updated++;
