@@ -209,12 +209,7 @@ if (index >= 0) {
 
 }
 }
-          status.lastInvoiceId = invoice.invoice_id;
-
-status.lastSyncTime = new Date();
-
-await status.save();
-
+        
 log(
 `Invoice Synced : ${invoice.invoice_number}`
 );
