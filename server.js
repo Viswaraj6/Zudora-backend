@@ -323,7 +323,36 @@ for (const row of rows) {
         notFound++;
         continue;
     }
+  
+if (row.Category)
+    product.category = row.Category;
 
+if (row.Color)
+    product.color = row.Color;
+
+if (row.Brand)
+    product.brand = row.Brand;
+
+if (row.Fabric)
+    product.fabric = row.Fabric;
+
+if (row.Fit)
+    product.fit = row.Fit;
+
+if (row.Pattern)
+    product.pattern = row.Pattern;
+
+if (row.Occasion)
+    product.occasion = row.Occasion;
+
+if (row.Description)
+    product.description = row.Description;
+
+if (row.Price)
+    product.price = Number(row.Price);
+
+await product.save();
+  
     updated++;
 }
 
