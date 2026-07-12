@@ -350,7 +350,37 @@ if (row.Description)
 
 if (row.Price)
     product.price = Number(row.Price);
+const allSizes = [
+    "S","M","L","XL","XXL",
+    "30","32","34","36","38","40"
+];
 
+for (const size of allSizes) {
+
+    if (row[size] === undefined) continue;
+
+    const stock = Number(row[size]);
+
+    const sizeObj = product.sizeStock.find(
+        s => s.size === size
+    );
+
+    if (sizeObj) {
+
+        sizeObj.stock = stock;
+
+    } else {
+
+        product.sizeStock.push({
+            size,
+            stock,
+            sku: "",
+            image: ""
+        });
+
+    }
+
+}
 await product.save();
   
     updated++;
