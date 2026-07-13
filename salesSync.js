@@ -168,27 +168,27 @@ if (!newestInvoiceId) {
 
    const styleNo = (item.name || "").trim().slice(0,4);
 
-    let product = await Product.findOne({ styleNo });
+   let product = await Product.findOne({ styleNo });
 
-    console.log(
-    product.styleNo,
-    soldSize,
-    product.stock
-);
-       
-         if (!product) {
+if (!product) {
 
     console.log("Product Not Found:", styleNo);
 
     continue;
 
 }
-         
-      const sizeField = (item.item_custom_fields || []).find(
+
+const sizeField = (item.item_custom_fields || []).find(
     f => f.api_name === "cf_size"
 );
 
 const soldSize = sizeField?.value;
+
+console.log(
+    product.styleNo,
+    soldSize,
+    product.stock
+);
 
 if (!soldSize) {
 
