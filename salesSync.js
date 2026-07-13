@@ -109,9 +109,25 @@ console.log(
     invoice.invoice_number
 );
         
-   if (status.lastInvoiceId === invoice.invoice_id) {
+  // Stop if same invoice found
+if (status.lastInvoiceId === invoice.invoice_id) {
 
     log("Reached Last Synced Invoice");
+
+    stopSync = true;
+
+    break;
+
+}
+
+// Stop if invoice is older than last synced date
+if (
+    status.lastInvoiceDate &&
+    new Date(invoice.created_time) <=
+    new Date(status.lastInvoiceDate)
+) {
+
+    log("Reached Last Synced Date");
 
     stopSync = true;
 
