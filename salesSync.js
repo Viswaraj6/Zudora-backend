@@ -137,7 +137,13 @@ if (
 
 }
 if (!newestInvoiceId) {
+
     newestInvoiceId = invoice.invoice_id;
+
+    newestInvoiceDate = new Date(
+        invoice.created_time
+    );
+
 }
         
     log(`Invoice : ${invoice.invoice_number}`);
