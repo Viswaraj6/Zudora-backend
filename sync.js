@@ -343,6 +343,10 @@ if (latestInvoice.data.invoices.length > 0) {
     salesStatus.lastInvoiceId =
         latestInvoice.data.invoices[0].invoice_id;
 
+  salesStatus.lastInvoiceDate =
+    new Date(
+        latestInvoice.data.invoices[0].created_time
+    );
     salesStatus.lastSyncTime = new Date();
 
     await salesStatus.save();
