@@ -211,10 +211,13 @@ console.log("Index:", index);
 
 if (index >= 0) {
 
-    // Negative stock avoid
-    if (product.sizeStock[index].stock > 0) {
-        product.sizeStock[index].stock--;
-    }
+    const qty = Number(item.quantity || 1);
+
+    product.sizeStock[index].stock =
+        Math.max(
+            0,
+            product.sizeStock[index].stock - qty
+        );
 
     product.stock = product.sizeStock.reduce(
         (a, b) => a + b.stock,
@@ -224,10 +227,11 @@ if (index >= 0) {
     await product.save();
 
     log(
-`Updated : ${product.styleNo} | ${soldSize} | Stock : ${product.stock}`
-);
-    
-} else {
+        `Updated : ${product.styleNo} | ${soldSize} | Qty : ${qty} | Stock : ${product.stock}`
+    );
+
+}
+else {
 
     console.log(
         "Size Not Found:",
