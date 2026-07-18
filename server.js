@@ -596,6 +596,26 @@ app.put("/user/:phone/address", async (req, res) => {
   }
 
 });
+
+app.get("/user/:phone/address", async (req, res) => {
+
+  try {
+
+    const user = await User.findOne({
+      phone: req.params.phone
+    });
+
+    res.json(
+      user?.addresses || []
+    );
+
+  } catch (err) {
+
+    res.status(500).json([]);
+
+  }
+
+});
 app.get("/products", async (req, res) => {
   try {
 
