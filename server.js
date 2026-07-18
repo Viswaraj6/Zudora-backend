@@ -91,7 +91,16 @@ global.Product = Product;
 const User = mongoose.model("User", {
   name: String,
   email: String,
-  address:String,
+  addresses:[
+{
+name:String,
+phone:String,
+pincode:String,
+city:String,
+state:String,
+address:String
+}
+],
   phone: {
     type: String,
     unique: true
