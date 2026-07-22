@@ -215,10 +215,18 @@ if (
      
         let product = await Product.findOne({ styleNo });
  
-      if (product && !product.createdAt) {
+     if (product && !product.createdAt) {
     product.createdAt = item.created_time
         ? new Date(item.created_time)
         : new Date();
+
+    product.markModified("createdAt");
+
+    console.log(
+        "SET CREATED AT:",
+        styleNo,
+        product.createdAt
+    );
 }
   
         if (!product) {
