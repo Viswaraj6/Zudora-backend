@@ -156,7 +156,13 @@ console.log("Calling Location API:", item.sku);
 } catch (err) {
 
     console.log("Skip Location API:", item.sku);
+} catch (err) {
 
+    console.log("Location API ERROR:", err.response?.data || err.message);
+
+    continue;
+
+}
     continue;
 
 }
